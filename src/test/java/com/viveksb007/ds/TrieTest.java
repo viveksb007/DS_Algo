@@ -7,7 +7,7 @@ import static org.testng.Assert.assertEquals;
 public class TrieTest {
 
     @Test
-    public void shouldAddWordsInTrie() {
+    public void shouldFindWordsWithPrefixInTrie() {
         Trie trie = new Trie();
         trie.addWord("helloworld");
         trie.addWord("hello");
@@ -16,6 +16,7 @@ public class TrieTest {
         trie.addWord("yoman");
         assertEquals(4, trie.printWordsWithPrefix("h"));
         assertEquals(3, trie.printWordsWithPrefix("he"));
+        assertEquals(0, trie.printWordsWithPrefix("hunk"));
     }
 
 }
