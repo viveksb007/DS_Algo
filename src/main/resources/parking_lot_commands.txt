@@ -1,0 +1,9 @@
+create_parking_lot n
+park DL01 WHITE
+park DL02 BLACK
+park DL03 RED
+park DL04 BLUE
+unpark 3
+park DL06 BLACK
+reg_number_with_color WHITE
+reg_number_with_color BLACK
