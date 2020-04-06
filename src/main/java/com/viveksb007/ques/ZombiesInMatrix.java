@@ -39,15 +39,10 @@ public class ZombiesInMatrix {
             return -1;
         }
         int level = 0;
-        q.add(null);
         while (!q.isEmpty()) {
-            Pair pair = q.remove();
-            if (pair == null) {
-                if (!q.isEmpty()) {
-                    level++;
-                    q.add(null);
-                }
-            } else {
+            int size = q.size();
+            for (i = 0; i < size; i++) {
+                Pair pair = q.remove();
                 int x = pair.row;
                 int y = pair.column;
                 for (int p = 0; p < 4; p++) {
@@ -57,8 +52,9 @@ public class ZombiesInMatrix {
                     }
                 }
             }
+            level++;
         }
-        return level;
+        return level - 1;
     }
 
     static class Pair {
