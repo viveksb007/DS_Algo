@@ -15,6 +15,8 @@ public class NetworkDelay {
         System.out.println("Floyd Warshall : " + maxTime);
         maxTime = networkDelay.dijkstra(times, n, k);
         System.out.println("Dijkstra : " + maxTime);
+        maxTime = networkDelay.bellmanFord(times, n, k);
+        System.out.println("Bellman Ford : " + maxTime);
     }
 
     private int floydWarshall(int[][] times, int n, int k) {
@@ -70,7 +72,28 @@ public class NetworkDelay {
     }
 
     private int bellmanFord(int[][] times, int n, int k) {
-        return 0;
+        int[] dist = new int[n + 1];
+        Arrays.fill(dist, Integer.MAX_VALUE);
+        dist[k] = 0;
+        for (int i = 1; i < n; i++) {
+            boolean change = false;
+            for (int[] edge : times) {
+                int u = edge[0];
+                int v = edge[1];
+                int w = edge[2];
+                if (dist[u] != Integer.MAX_VALUE && (dist[u] + w < dist[v])) {
+                    dist[v] = dist[u] + w;
+                    change = true;
+                }
+            }
+            if (!change)
+                break;
+        }
+        int max = 0;
+        for (int i = 1; i <= n; i++) {
+            max = Math.max(max, dist[i]);
+        }
+        return max;
     }
 
 }
