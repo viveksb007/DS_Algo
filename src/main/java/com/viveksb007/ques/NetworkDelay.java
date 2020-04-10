@@ -93,7 +93,7 @@ public class NetworkDelay {
         for (int i = 1; i <= n; i++) {
             max = Math.max(max, dist[i]);
         }
-        return max;
+        return (max == Integer.MAX_VALUE) ? -1 : max;
     }
 
 }
