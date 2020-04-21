@@ -32,12 +32,11 @@ public class MergeSort {
             if (lArr[i] <= rArr[j]) {
                 arr[k] = lArr[i];
                 i++;
-                k++;
             } else {
                 arr[k] = rArr[j];
                 j++;
-                k++;
             }
+            k++;
         }
         while (i < l1) {
             arr[k++] = lArr[i++];
