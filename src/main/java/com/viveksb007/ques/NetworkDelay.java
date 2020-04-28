@@ -11,11 +11,11 @@ public class NetworkDelay {
         };
         int n = 4;
         int k = 2;
-        int maxTime = networkDelay.floydWarshall(times, n, k); // 2
-        System.out.println("Floyd Warshall : " + maxTime);
-        maxTime = networkDelay.dijkstra(times, n, k);
+        int maxTime = networkDelay.floydWarshall(times, n, k); // O(V^3)
+        System.out.println("Floyd Warshall : " + maxTime);  // 2
+        maxTime = networkDelay.dijkstra(times, n, k); // O(E Log(V))
         System.out.println("Dijkstra : " + maxTime);
-        maxTime = networkDelay.bellmanFord(times, n, k);
+        maxTime = networkDelay.bellmanFord(times, n, k); // O(VE)
         System.out.println("Bellman Ford : " + maxTime);
     }
 
