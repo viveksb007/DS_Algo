@@ -2,14 +2,35 @@ package com.viveksb007;
 
 import org.testng.annotations.Test;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 import static org.testng.Assert.assertNotEquals;
 import static org.testng.Assert.assertSame;
 
 public class JavaAPITest {
+
+    @Test
+    public void pqSout() {
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> b - a);
+        pq.add(1);
+        pq.add(2);
+        pq.add(3);
+        pq.add(-1);
+        pq.add(10);
+        System.out.println(pq);
+    }
+
+    @Test
+    public void setOfListTest() {
+        Set<List<Integer>> set = new HashSet<>();
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        set.add(list);
+        set.add(new ArrayList<>(list));
+        System.out.println(set.size());
+        System.out.println(set.contains(new ArrayList<>(list)));
+    }
 
     @Test
     public void doesHashMapDifferentiatesByDefault() {
