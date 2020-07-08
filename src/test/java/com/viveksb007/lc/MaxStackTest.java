@@ -7,8 +7,12 @@ import static org.testng.Assert.assertEquals;
 public class MaxStackTest {
 
     @Test
-    public void testMaxStack() {
-        MaxStack stack = new MaxStack();
+    public void testMaxStackPqImpl() {
+        MaxStack stack = new MaxStackPqImpl();
+        test(stack);
+    }
+
+    private void test(MaxStack stack) {
         stack.push(5);
         stack.push(1);
         assertEquals(1, stack.top());
