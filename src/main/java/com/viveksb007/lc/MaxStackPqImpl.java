@@ -13,7 +13,7 @@ public class MaxStackPqImpl implements MaxStack {
         stack = new Stack<>();
         pq = new PriorityQueue<>((a, b) -> {
             if (a.val == b.val) {
-                return 1;
+                return b.index - a.index;
             }
             return b.val - a.val;
         });
@@ -21,7 +21,7 @@ public class MaxStackPqImpl implements MaxStack {
 
     @Override
     public void push(int x) {
-        Node node = new Node(x);
+        Node node = new Node(x, stack.size());
         stack.push(node);
         pq.add(node);
     }
@@ -60,12 +60,19 @@ public class MaxStackPqImpl implements MaxStack {
         return node.val;
     }
 
+    @Override
+    public int size() {
+        return stack.size();
+    }
+
     static class Node {
         int val;
+        int index;
         boolean isValid;
 
-        Node(int val) {
+        Node(int val, int index) {
             this.val = val;
+            this.index = index;
             isValid = true;
         }
 

@@ -8,11 +8,11 @@ public class MaxStackTest {
 
     @Test
     public void testMaxStackPqImpl() {
-        MaxStack stack = new MaxStackPqImpl();
+        MaxStackPqImpl stack = new MaxStackPqImpl();
         test(stack);
     }
 
-    private void test(MaxStack stack) {
+    private void test(MaxStackPqImpl stack) {
         stack.push(5);
         stack.push(1);
         assertEquals(1, stack.top());
@@ -35,6 +35,48 @@ public class MaxStackTest {
         assertEquals(1, stack.pop());
         assertEquals(5, stack.peekMax());
         assertEquals(5, stack.popMax());
+        assertEquals(0, stack.size());
+
+        stack.push(10);
+        stack.push(10);
+        stack.push(10);
+        stack.push(9);
+        stack.push(8);
+        stack.push(7);
+        assertEquals(10, stack.peekMax());
+        assertEquals(7, stack.top());
+        assertEquals(10, stack.popMax());
+        assertEquals(10, stack.peekMax());
+        assertEquals(7, stack.pop());
+        assertEquals(8, stack.top());
+        assertEquals(8, stack.pop());
+        assertEquals(9, stack.pop());
+        assertEquals(2, stack.size());
+        assertEquals(10, stack.peekMax());
+        assertEquals(10, stack.pop());
+        assertEquals(10, stack.pop());
+        assertEquals(0, stack.size());
+
+        stack.push(10);
+        stack.push(10);
+        stack.push(10);
+        stack.push(10);
+        stack.push(10);
+        stack.push(10);
+        stack.push(10);
+        assertEquals(10, stack.popMax());
+        assertEquals(6, stack.size());
+        assertEquals(10, stack.popMax());
+        assertEquals(5, stack.size());
+        assertEquals(10, stack.popMax());
+        assertEquals(4, stack.size());
+        assertEquals(10, stack.popMax());
+        assertEquals(3, stack.size());
+        stack.pop();
+        stack.pop();
+        assertEquals(10, stack.peekMax());
+        assertEquals(10, stack.popMax());
+        assertEquals(0, stack.size());
     }
 
 }

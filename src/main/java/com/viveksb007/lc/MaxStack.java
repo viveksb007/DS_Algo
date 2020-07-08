@@ -12,4 +12,6 @@ public interface MaxStack {
 
     int popMax();
 
+    int size();
+
 }
