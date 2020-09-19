@@ -34,4 +34,11 @@ public class SegmentTreeTest {
         assertEquals(8, result);
     }
 
+    @Test
+    public void testArraySizeForTreeLogic() {
+        assertEquals(15, SegmentTree.findArraySizeToRepresentTree(8));
+        assertEquals(15, SegmentTree.findArraySizeToRepresentTree(6));
+        assertEquals(31, SegmentTree.findArraySizeToRepresentTree(10));
+    }
+
 }

@@ -8,7 +8,7 @@ public class SegmentTree {
     private final Integer[] tree;
 
     public SegmentTree(Integer[] arr, MergeFunction<Integer, Integer, Integer> mergeFunction) {
-        tree = new Integer[15]; // todo : find size of arr req for tree
+        tree = new Integer[findArraySizeToRepresentTree(arr.length)];
         this.mergeFunction = mergeFunction;
         Arrays.fill(tree, null);
         createTree(arr);
@@ -59,6 +59,13 @@ public class SegmentTree {
         int r = createTreeUtil(2 * index + 2, mid + 1, end, arr);
         tree[index] = mergeFunction.merge(l, r);
         return tree[index];
+    }
+
+    public static int findArraySizeToRepresentTree(int n) {
+        double power = Math.log(n) / Math.log(2);
+        if (((int) power) == power) return 2 * n - 1;
+        int reqPower = (int) power + 1;
+        return (int) Math.pow(2, reqPower) * 2 - 1;
     }
 
 }
