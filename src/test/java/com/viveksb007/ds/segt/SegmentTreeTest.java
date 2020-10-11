@@ -35,6 +35,17 @@ public class SegmentTreeTest {
     }
 
     @Test
+    public void testSegmentTreeForRangeXORProblems() {
+        Integer[] arr = new Integer[]{1, 3, 5, 7, 9, 11};
+        SegmentTree segmentTree = new SegmentTree(arr, new XorFunction());
+        int result = segmentTree.findQuery(1, 3, arr);
+        assertEquals(1, result);
+        segmentTree.updateElement(1, 10, arr);
+        result = segmentTree.findQuery(1, 3, arr);
+        assertEquals(8, result);
+    }
+
+    @Test
     public void testArraySizeForTreeLogic() {
         assertEquals(15, SegmentTree.findArraySizeToRepresentTree(8));
         assertEquals(15, SegmentTree.findArraySizeToRepresentTree(6));
